@@ -1,0 +1,35 @@
+{
+  "name": "ira",
+  "description": "yet another web framework",
+  "version": "0.0.0",
+  "homepage": "https://github.com/alejandro/ira",
+  "author": {
+    "name": "Alejandro Morales",
+    "email": "vamg008@gmail.com",
+    "url": "http://alejandromorales.co.cc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alejandro/ira.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alejandro/ira/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/alejandro/ira/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/ira",
+  "engines": {
+    "node": ">= 0.7.5"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests/test.*.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "mapleTree": "~0.4.0"
+  }
+}
