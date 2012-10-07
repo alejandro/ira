@@ -30,6 +30,12 @@
   },
   "keywords": [],
   "dependencies": {
-    "mapleTree": "~0.4.0"
+    "mapleTree": "~0.4.0",
+    "filed": "0.0.7",
+    "promesas": "0.0.0",
+    "underscore": "~1.4.2"
+  },
+  "devDependencies": {
+    "debug": "~0.7.0"
   }
 }

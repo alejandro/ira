@@ -1,42 +1,47 @@
-var ira = require('../lib/ira')
-  , server = ira.createServer()
 
-server['post'] = server.when = function (){
-    console.log(arguments.callee.caller)
+/*test*/
+var Ira = require('../lib/ira')
+var ira = Ira.createServer()
+
+function before(req, res, next) {
+    console.log('BEFORE')
+    next()
 }
 
-server.add = function () {
-    return {
-        for: function () {
-            return {
-                on: function () {}
-            }
-        }
-    }
+function after(req, res) {
+       console.log('AFTER')
+    res.end('ok')
 }
-function before(req, res) {
+ira.define('error', function (req, res){
+    res.statusCode = 500
+    res.end('...................ERRIR...................')
+})
 
-}
-
-function action(req, res) {
-
-}
-function onError(req, res) {
-
-}
-
-
-server
-  .when('/', {
-    methods: ['POST!'],
-    before: before,
-    action: action,
-    error: onError
-  })
-
-server.post('/', before, action, onError)
+ira.for('/')
+    .do(function (req, res){
+        console.log('here')
+        res.end('Welcome to Ira. Yet another web framework')
+    })
 
 
-server.add(before, action, onError)
-      .for('/')
-      .on('GET','POST')
+ira.for('/hi/:mundo')
+   .do(before, function (req, res){
+
+        res.end('OK')
+    })
+
+
+
+ira.do(after, before).for('/his/:lul')
+ira.for('/_get').do(before).on('PUT')
+ira.do(after, before).for('/his/pedro/:l_ul')
+ira.for('/get').do(after, before).on('PUT')
+
+ira.for('/get/:id').do(function(req, res){
+    console.log('BODY', req.body.a)
+    res.end('OK---' + req.params.id)
+}).on('POST')
+
+
+
+ira.listen(8100)
