@@ -12,10 +12,13 @@ function after(req, res) {
        console.log('AFTER')
     res.end('ok')
 }
-ira.define('error', function (req, res){
-    res.statusCode = 500
-    res.end('...................ERRIR...................')
-})
+
+// Error is an instance of ServerResponse, so res#* is imply on "this"
+
+// ira.define('error', function (error, code){
+//     this.statusCode = 500
+//     this.end('...................ERROR...................')
+// })
 
 ira.for('/')
     .do(function (req, res){
