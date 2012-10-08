@@ -1,0 +1,35 @@
+html, body {
+
+}
+body { 
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background: #ACE7A3;
+}
+
+body.etc {
+    font-family:"Droid Sans", "FreeSans", sans-serif
+}
+.content {
+    position: absolute;
+    z-index: 1;
+    top: 120px;
+    left: 0px;
+    height: 230px;
+    color: #555;
+    font-size: 12px;
+    padding: 20px;
+    background: white;
+    width: 100%;
+    max-height: 400px;
+    box-shadow: 1px 1px 3px #CCC;
+}
+#title {
+    color: #78C9A9;
+    padding-top: 50px;
+}
+
+#description {
+
+}
