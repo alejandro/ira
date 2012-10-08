@@ -28,7 +28,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha tests/test.*.js"
   },
-  "keywords": [],
+  "keywords": ["framework","web","application"],
   "dependencies": {
     "mapleTree": "~0.4.0",
     "filed": "0.0.7",

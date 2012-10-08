@@ -1,50 +1,31 @@
 
 /*test*/
+var fs = require('fs')
 var Ira = require('../lib/ira')
-var ira = Ira.createServer()
-
-function before(req, res, next) {
-    console.log('BEFORE')
-    next()
-}
-
-function after(req, res) {
-       console.log('AFTER')
-    res.end('ok')
-}
+var ira = Ira.createApp({})
 
 // Error is an instance of ServerResponse, so res#* is imply on "this"
 
-// ira.define('error', function (error, code){
-//     this.statusCode = 500
-//     this.end('...................ERROR...................')
-// })
+ira.define('error', function ( code, error){
+    if (code === 404 && !error) error = new Error('No encontrado')
+    this.statusCode = code || 404 
+    this.end(error.stack + '\n')
+})
 
-ira.for('/')
-    .do(function (req, res){
-        console.log('here')
-        res.end('Welcome to Ira. Yet another web framework')
+ira.define('env:production', function (conf){
+    conf.use('favicon')
+})
+
+
+ira.for('/').do(function (req, res){
+    var st = fs.createReadStream(__dirname + '/index.html')
+    st.on('error', function (){
+        res.end('ERROR')
     })
+    st.pipe(res)
+})
 
 
-ira.for('/hi/:mundo')
-   .do(before, function (req, res){
-
-        res.end('OK')
-    })
-
-
-
-ira.do(after, before).for('/his/:lul')
-ira.for('/_get').do(before).on('PUT')
-ira.do(after, before).for('/his/pedro/:l_ul')
-ira.for('/get').do(after, before).on('PUT')
-
-ira.for('/get/:id').do(function(req, res){
-    console.log('BODY', req.body.a)
-    res.end('OK---' + req.params.id)
-}).on('POST')
-
-
-
-ira.listen(8100)
+ira.listen(8100, function(){
+    console.log('[*] IRA: Server listening on', this.address().port)
+})
