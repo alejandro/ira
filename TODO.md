@@ -6,4 +6,4 @@
 - CLI tool
 - More clean templates
 - Fix API (for, do, on) is not really appropiated.I like it though
-- 
+-

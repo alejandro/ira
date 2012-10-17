@@ -37,7 +37,8 @@
     "mapleTree": "~0.4.0",
     "filed": "0.0.7",
     "promesas": "0.0.0",
-    "underscore": "~1.4.2"
+    "underscore": "~1.4.2",
+    "q": "~0.8.9"
   },
   "devDependencies": {
     "debug": "~0.7.0",

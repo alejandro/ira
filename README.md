@@ -9,7 +9,7 @@ Install the module with: `npm install ira`
 var ira = require('ira')
   , server;
 
-server = ira.createServer(options);
+server = ira.createApp(options);
 
 ```
 
